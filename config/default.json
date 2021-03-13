@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://lalit8750:lalit8750@cluster0.ausbk.mongodb.net/mern_project?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
