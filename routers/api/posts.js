@@ -1,5 +1,5 @@
 const express = require("express");
-const config = require("config");
+// const config = require("config");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const User = require("../../models/Users/user");
@@ -65,9 +65,59 @@ router.get("/:id", auth, async (req, res) => {
     }
     res.json(post);
   } catch (err) {
-    if (err.kind === ObjectId) {
+    if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "post not found" });
     }
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+//@route    DELETE api/posts/:id
+//@desc     delete Post by id
+//@access   Private
+
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: "post not found" });
+    }
+    //check user
+    if (post.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "User not authorize" });
+    }
+    await post.remove();
+    res.json({ msg: "Post deleted" });
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "post not found" });
+    }
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+//@route    PUT api/posts/like:id
+//@desc     Like a post
+//@access   Private
+
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    //check if the post has already been liked
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
+    ) {
+      return res.status(400).json({ msg: "Post already liked" });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+    await post.save();
+    res.json(post.likes);
+  } catch (err) {
     console.log(err.message);
     res.status(500).send("Server Error");
   }
