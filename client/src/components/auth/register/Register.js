@@ -1,0 +1,67 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Register = () => {
+  return (
+    <div>
+      <nav class="navbar bg-dark">
+        <h1>
+          <Link to="/">
+            <i class="fas fa-code"></i> DevConnector
+          </Link>
+        </h1>
+        <ul>
+          <li>
+            <Link to="/">Developers</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </nav>
+      <section class="container">
+        <h1 class="large text-primary">Sign Up</h1>
+        <p class="lead">
+          <i class="fas fa-user"></i> Create Your Account
+        </p>
+        <form class="form" action="create-profile.html">
+          <div class="form-group">
+            <input type="text" placeholder="Name" name="name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" name="email" />
+            <small class="form-text">
+              This site uses Gravatar so if you want Link profile image, use
+              Link Gravatar email
+            </small>
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              minLength="6"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              minLength="6"
+            />
+          </div>
+          <input type="submit" class="btn btn-primary" value="Register" />
+        </form>
+        <p class="my-1">
+          Already have an account? <Link to="/login">Sign In</Link>
+        </p>
+      </section>
+    </div>
+  );
+};
+
+export default Register;
