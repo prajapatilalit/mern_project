@@ -1,27 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../../layout/navbar/Navbar";
 
 const Login = () => {
   return (
     <div>
-      <nav class="navbar bg-dark">
-        <h1>
-          <Link to="/">
-            <i class="fas fa-code"></i> DevConnector
-          </Link>
-        </h1>
-        <ul>
-          <li>
-            <Link to="/">Developers</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
       <section class="container">
         <div class="alert alert-danger">Invalid credentials</div>
         <h1 class="large text-primary">Sign In</h1>
