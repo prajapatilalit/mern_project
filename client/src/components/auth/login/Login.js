@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <>
+    <Fragment>
       <section className="container">
         <div className="alert alert-danger">Invalid credentials</div>
         <h1 className="large text-primary">Sign In</h1>
@@ -28,7 +28,7 @@ const Login = () => {
           Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
       </section>
-    </>
+    </Fragment>
   );
 };
 
