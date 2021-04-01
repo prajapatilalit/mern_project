@@ -1,28 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../layout/navbar/Navbar";
 
 const Register = () => {
   return (
-    <div>
-      <Navbar />
-      <section class="container">
-        <h1 class="large text-primary">Sign Up</h1>
-        <p class="lead">
-          <i class="fas fa-user"></i> Create Your Account
+    <>
+      <section className="container">
+        <h1 className="large text-primary">Sign Up</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Create Your Account
         </p>
-        <form class="form" action="create-profile.html">
-          <div class="form-group">
+        <form className="form" action="create-profile.html">
+          <div className="form-group">
             <input type="text" placeholder="Name" name="name" required />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input type="email" placeholder="Email Address" name="email" />
-            <small class="form-text">
+            <small className="form-text">
               This site uses Gravatar so if you want Link profile image, use
               Link Gravatar email
             </small>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="password"
               placeholder="Password"
@@ -30,7 +28,7 @@ const Register = () => {
               minLength="6"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="password"
               placeholder="Confirm Password"
@@ -38,13 +36,13 @@ const Register = () => {
               minLength="6"
             />
           </div>
-          <input type="submit" class="btn btn-primary" value="Register" />
+          <input type="submit" className="btn btn-primary" value="Register" />
         </form>
-        <p class="my-1">
+        <p className="my-1">
           Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </section>
-    </div>
+    </>
   );
 };
 
