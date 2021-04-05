@@ -57,7 +57,7 @@ router.post(
       facebook,
       twitter,
       instagram,
-      linkdin,
+      linkedin,
     } = req.body;
 
     //Build profile object
@@ -81,7 +81,7 @@ router.post(
     if (twitter) profileFields.twitter = twitter;
     if (facebook) profileFields.facebook = facebook;
     if (instagram) profileFields.instagram = instagram;
-    if (linkdin) profileFields.linkdin = linkdin;
+    if (linkedin) profileFields.linkedin = linkedin;
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });

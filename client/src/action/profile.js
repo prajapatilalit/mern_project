@@ -17,3 +17,25 @@ export const getCurrentProfile = () => async (dispatch) => {
     });
   }
 };
+
+//create and update profile
+
+export const createProfile = (FormData, history, edit = false) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      Headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const res = await axios.post("/api/profile", FormData, config);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert(edit ? "Profile Updated" : "Profile Created"));
+  } catch (error) {}
+};
