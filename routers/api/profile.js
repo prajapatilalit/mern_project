@@ -17,7 +17,7 @@ router.get("/me", auth, async (req, res) => {
       user: req.user.id,
     }).populate("user", ["name", "avatar"]);
     if (!profile) {
-      return res.status(400).json({ msg: "There is no profil of this user" });
+      return res.status(400).json({ msg: "There is no profile of this user" });
     }
     res.json(profile);
   } catch (err) {
@@ -77,11 +77,11 @@ router.post(
     //build social object
 
     profileFields.social = {};
-    if (youtube) profileFields.youtube = youtube;
-    if (twitter) profileFields.twitter = twitter;
-    if (facebook) profileFields.facebook = facebook;
-    if (instagram) profileFields.instagram = instagram;
-    if (linkedin) profileFields.linkedin = linkedin;
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (instagram) profileFields.social.instagram = instagram;
+    if (linkedin) profileFields.social.linkedin = linkedin;
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
@@ -317,7 +317,7 @@ router.get("/github/:username", (req, res) => {
         "githubClientId"
       )}&client_secret=${config.get("githubSecret")}`,
       method: "GET",
-      header: { "user-agent": "node.js" },
+      headers: { "user-agent": "node.js" },
     };
     request(options, (error, response, body) => {
       if (error) {
