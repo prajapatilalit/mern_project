@@ -109,7 +109,7 @@ router.post(
 );
 
 //@route    GET api/profile
-//@desc     Get all user profile
+//@desc     Get all profiles
 //@access   Public
 
 router.get("/", async (req, res) => {
